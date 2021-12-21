@@ -1,0 +1,8 @@
+.blog_home{
+    width: 80vw;
+    height: 80vh;
+    background-color: rgb(223, 221, 221);
+    margin: 0 10vw;
+    padding-bottom: 10vh;
+    overflow-y: scroll;
+}

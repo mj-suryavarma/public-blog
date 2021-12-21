@@ -1,0 +1,65 @@
+.entry_page{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding-top: 60px;
+    min-height: 85vh;
+    background-color: rgb(135, 157, 170);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.login_container{
+    flex: 0.5;
+    padding:0 30px;
+    max-width: 500px;
+ }
+
+ .welcome_icon_container{ 
+     flex:0.5;
+     width: 350px;
+     gap: 20px;
+     height: 350px;
+     justify-content: space-between;
+     font-size: 2rem;
+     color: rgb(32, 27, 27);
+     animation-name: welcomeIcon;
+     animation-duration: 3s;
+     animation-iteration-count: infinite;
+     
+    }
+    @keyframes welcomeIcon {
+        0%{
+            margin-top: 20px;
+        }
+        50%{
+            margin-top: 0px;
+        }
+        100%{
+            margin-top: 20px;
+        }
+    }
+  
+ .welcome_icon{
+     font-size: 3rem;
+     margin: 20px;
+     
+ }
+ .welcome_icon_container > div {
+     display: flex;
+     flex-direction: row;
+     justify-content: space-evenly;
+     text-align: center;
+
+ }
+  .welcome_icon_container >div >svg:hover {
+     color: whitesmoke;
+ }
+
+ @media screen and (max-width:600px) {
+     .welcome_icon_container{
+         display: none;
+     }
+     
+ }

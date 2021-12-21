@@ -1,0 +1,14 @@
+.header_watermark{
+    margin: 10px;
+    font-size: 1.7rem;
+    color: rgb(146, 146, 146);
+    padding: 20px;
+ 
+}
+
+.register_container{ 
+    max-width: 500px;
+    margin: 0 30%;
+    padding-top: 16vh;
+
+}

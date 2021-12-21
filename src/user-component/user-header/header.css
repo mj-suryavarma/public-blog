@@ -1,0 +1,67 @@
+.user_header{
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+  justify-content: space-between;
+  
+}
+
+.user_logo{
+  font-size: 1.7rem;
+  color: rgb(41, 41, 41);
+ 
+}
+.header_nav{
+  display: flex;
+}
+
+.header_nav > div > svg {
+  font-size: 1rem;
+  cursor: pointer;
+  margin: 10px;
+}
+ 
+.user_header_icon:hover{
+  cursor: pointer;
+}
+.header_nav_user{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width:40vw;
+}
+.header_nav_user >div > svg {
+  font-size: 1.3rem;
+  margin: 10px;
+  cursor: pointer;
+}
+.userIcon{
+  font-size: 0.4rem;
+}
+ 
+.toolIcon_container{
+  display: none;
+
+}
+.toolIcon{
+  font-size: 1rem;
+}
+
+@media screen and (max-width:700px) {
+  
+  .header_nav_user {
+   display: none;
+  }
+  .toolIcon_container{
+    display: flex;
+  }
+  .header_nav > div > svg {
+    font-size: 1.3rem;
+    margin: 5px;
+  }
+  .user_logo{
+    font-size: 1.5rem;
+  } 
+}
+
+ 
