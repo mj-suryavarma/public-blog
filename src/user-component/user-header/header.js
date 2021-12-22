@@ -29,9 +29,9 @@ function UserHeader() {
           
                <div>
                    <IconButton>
-                <Avatar className='userIcon' />
+                <Avatar src={localStorage.getItem('googlepicture')} className='userIcon' />
                    </IconButton>
-                   <span>{localStorage.getItem('name')}</span>
+                   <span>{localStorage.getItem('name') ? localStorage.getItem('googlename') : localStorage.getItem('name')}</span>  
                  </div>     
        </div >
 

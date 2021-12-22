@@ -5,6 +5,7 @@ import {faComments,
   faClipboard, 
   faFeatherAlt, 
   faEdit, 
+  faArrowRight,
 faGlobe} from '@fortawesome/free-solid-svg-icons';
 import {GoogleLogin} from 'react-google-login';
 import axios from 'axios';
@@ -32,7 +33,22 @@ class Login extends Component {
 
             }
    responseGoogleSuccess = (response) => {
-           console.log(response)
+
+         
+         axios.post('http://localhost:8000/api/v1/google/auth',{tokenId : response.tokenId})
+         .then(res => {
+           console.log(res.data.data)
+            const {email_verified, name ,email, picture} = res.data.data;
+             if(email_verified){ 
+               localStorage.setItem('googlename',name);
+               localStorage.setItem('googleemail',email);
+               localStorage.setItem('googlepicture',picture);
+
+                      window.open('/app/public',"_self");
+             }
+          })
+         .catch(err => console.log(err)); 
+
   }
 
    responseGoogleFailure = (response) =>{
@@ -122,11 +138,18 @@ class Login extends Component {
                 <button type='submit' className='btn btn-primary mt-4'>Submit</button>
 
             </form>
+            <div className='mt-3 text-light' style={{fontSize:'1.1rem'}} >Are you new person? <a href="/register" style={{fontSize:'1rem',textDecoration:'none' }}>Register</a></div>
+            <p className='text-light mt-4'>
+              OR
+            </p>
             <div>
             <GoogleLogin
     clientId="631249414397-4hklutmu3rn135q8h4j85ob79a0r5qmn.apps.googleusercontent.com"
     render={renderProps => (
-      <button onClick={renderProps.onClick} disabled={renderProps.disabled}>This is my custom Google button</button>
+      <button  className='google_custom_button btn btn-primary mt-3'
+      onClick={renderProps.onClick} disabled={renderProps.disabled}>
+        <FontAwesomeIcon icon={faArrowRight} />
+         <span> </span>  Continue with google</button>
     )}
     buttonText="Login"
     onSuccess={this.responseGoogleSuccess}
@@ -134,7 +157,7 @@ class Login extends Component {
     cookiePolicy={'single_host_origin'} />
    
               </div>
-            <div className='mt-3 text-light' style={{fontSize:'1.1rem'}} >Are you new person? <a href="/register" style={{fontSize:'1rem',textDecoration:'none' }}>Register</a></div>
+           
             </div>
         </div>
     )
