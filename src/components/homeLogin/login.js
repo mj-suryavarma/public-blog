@@ -8,7 +8,7 @@ import {faComments,
   faArrowRight,
 faGlobe} from '@fortawesome/free-solid-svg-icons';
 import {GoogleLogin} from 'react-google-login';
-import axios from 'axios';
+import axios from '../../axios.js';
 
 
 class Login extends Component {
@@ -18,6 +18,9 @@ class Login extends Component {
            this.state = {
              email :"",
              password :'',
+             isError:'',
+             isHaveAccount:false,
+             isLoading:false,
            }
            this.changeHandler = this.changeHandler.bind(this);
            this.onSubmitHandler = this.onSubmitHandler.bind(this);
@@ -35,27 +38,41 @@ class Login extends Component {
    responseGoogleSuccess = (response) => {
 
          
-         axios.post('http://localhost:8000/api/v1/google/auth',{tokenId : response.tokenId})
+         axios.post('/api/v1/google/auth',{tokenId : response.tokenId})
          .then(res => {
            console.log(res.data.data)
-            const {email_verified, name ,email, picture} = res.data.data;
+            const {email_verified, name ,email,_id, picture} = res.data.data;
              if(email_verified){ 
-               localStorage.setItem('googlename',name);
-               localStorage.setItem('googleemail',email);
-               localStorage.setItem('googlepicture',picture);
+               localStorage.setItem('name',name);
+               localStorage.setItem('email',email);
+               localStorage.setItem('userId',_id);
+               localStorage.setItem('type',"google")
+               localStorage.setItem('googlePicture',picture);
 
                       window.open('/app/public',"_self");
              }
           })
-         .catch(err => console.log(err)); 
+         .catch(err =>{
+            console.log(err)
+            this.setState({isError:"something went wrong try again"})
+            setTimeout(() => {
+             this.setState({isError:''})
+            }, 4000);
+          }); 
 
   }
 
    responseGoogleFailure = (response) =>{
           console.log(response);
+          this.setState({isError:"something went wrong try again"})
+          setTimeout(() => {
+           this.setState({isError:''})
+          }, 4000);
   }
  onSubmitHandler = (e) => {
     e.preventDefault(); 
+      this.setState({isLoading : true});
+
     console.log(this.state.email," and  password is: ",this.state.password);
                 const email = this.state.email;
                 const password = this.state.password;
@@ -63,27 +80,51 @@ class Login extends Component {
 //// find the user 
             if(email && password) {
 
-              axios.post('http://localhost:8000/api/v1/user/login',{email,password})
+              axios.post('/api/v1/user/login',{email,password})
               .then(res =>{
       ///   get token
-                  const {user,token} = res.data
+                  const {user,token,msg} = res.data
+                  console.log(res.data)
                    console.log(user.name, token);
                    if(token && user.name) {
+
+                    /// ser user via manual login
                            localStorage.setItem('token',token);
                            localStorage.setItem('name', user.name);
+                           localStorage.setItem('userId',user.id);
+                           localStorage.setItem('type',"auth")
                            
+              //              /// remove cache google user
+               localStorage.removeItem('googlename');
+               localStorage.removeItem('googleemail');
+               localStorage.removeItem('googlepicture');
+                           
+                      this.setState({isLoading:false});
                            window.open('/app/public',"_self");
 
-                   }else{
-                     console.log("something went wrong please try again later...")
                    }
+                   if(msg){
+                     this.setState({isError:msg})
+                     setTimeout(() => {
+                       this.setState({isError:''})
+                     }, 5000); 
+                  }
+                    
               })
               .catch((err) =>  {
+                this.setState({isError:"something went wrong try again"})
+                setTimeout(() => {
+                 this.setState({isError:''})
+                }, 4000);
                   console.log("error: Bad request error....",err);  
               });
               
             }
             else {
+              this.setState({isError:"something went wrong try again"})
+              setTimeout(() => {
+               this.setState({isError:''})
+              }, 4000);
               console.log("bad request error");
             }
   }
@@ -92,6 +133,7 @@ class Login extends Component {
     
     return (
         <div className="entry_page">
+         
             <div className="welcome_icon_container ">
               <div>
              <FontAwesomeIcon icon={faComments} className='welcome_icon' />
@@ -109,8 +151,9 @@ class Login extends Component {
             </div>
             <div className='login_container'>
               <h3>Login</h3>
-            <form className='form' onSubmit={this.onSubmitHandler}>
               
+            <form className='form mt-4' onSubmit={this.onSubmitHandler}>
+              <p style={{color:'red'}}>{this.state.isError? this.state.isError : ''}</p>
               <div className="form-group mt-1">
                 <label htmlFor="">Email</label>
                 <input type="email"
@@ -135,7 +178,11 @@ class Login extends Component {
                 placeholder='password' 
                 /> 
               </div> 
-                <button type='submit' className='btn btn-primary mt-4'>Submit</button>
+                <button 
+                type='submit' 
+                className='btn btn-primary mt-4'
+                 disabled={this.state.isLoading}>
+                   {this.state.isLoading ? "Loading.." : "submit"}</button>
 
             </form>
             <div className='mt-3 text-light' style={{fontSize:'1.1rem'}} >Are you new person? <a href="/register" style={{fontSize:'1rem',textDecoration:'none' }}>Register</a></div>

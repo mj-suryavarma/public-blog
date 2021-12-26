@@ -14,6 +14,9 @@ class Register extends Component {
             name:'',
           email :"",
           password :'',
+          isError: false,
+          isSuccess: false,
+          isMessage : '',
         }
         this.changeHandler = this.changeHandler.bind(this);
         this.onSubmitHandler = this.onSubmitHandler.bind(this);
@@ -42,12 +45,32 @@ onSubmitHandler = (e) => {
              const name = this.state.name;
              console.log("name",name,"password",password,"email",email);
              
-   axios.get('http://localhost:8000/api/v1/user/auth',)
+ 
+      axios.post('http://localhost:8000/api/v1/user/register', {name,email, password,})
+      .then(res =>{ 
+        console.log(res.data)
+       const {success,msg} = res.data;
+       if(success){
 
-      axios.post('http://localhost:8000/api/v1/user/auth', {name,email, password,}).then(res =>{ console.log(res.data)
+         this.setState({isSuccess: true})
+         this.setState({isError: false})
+
+         setTimeout(()=>{
+
       window.open('/',"_self");
+           
+         },2000)
+       }
+    if(msg){
+      this.setState({isMessage:msg})
+    }
+    
     })
-      .catch((err) => console.log(err));
+      .catch((err) =>{
+         console.log(err)
+        this.setState({isError:true})
+
+        });
 
 
 }
@@ -64,7 +87,10 @@ onSubmitHandler = (e) => {
             <div className='register_container'>
               <h3>Register</h3>
             <form className='form' onSubmit={this.onSubmitHandler}>
-            <div className="form-group mt-1">
+              <p style={{color:'green'}}>{this.state.isSuccess ? "successfully resgister your details": ""}</p>
+              <p style={{color:'red'}}>{this.state.isError ? "something went wrong please try again later": ""}</p>
+              <p style={{color:'blueviolet'}}>{this.state.isMessage ? this.state.isMessage : '' }</p>
+            <div className="form-group mt-4">
                 <label htmlFor="name">Name</label>
                 <input type="text"
                  className="form-control mt-1"
@@ -97,7 +123,7 @@ onSubmitHandler = (e) => {
 
               </div> 
                 <button type='submit' className='btn btn-primary mt-4'>Submit</button>
-              <h5 className='mt-3'>Do you have an Account <a href='/'
+              <h5 className='mt-3'>Do you have an Account ? go <a href='/'
               className='link'
               style={{textDecoration:'none'}}>Home page</a></h5>
             </form>

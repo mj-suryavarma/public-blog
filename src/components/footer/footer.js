@@ -5,7 +5,7 @@ import './footer.css';
 
 function Footer() {
     return (
-        <div className='footer'>
+        <div className='footer_area' id="Contactus">
           <div className='footer_container pt-5'>
             <div className='footer_company'>
                      <h4 className='footer_logo'>yourWords
@@ -16,8 +16,8 @@ function Footer() {
                      </div>
             </div>
                  <div className='footer_company_details mt-3'>
-                    <h4>About</h4> 
                   <ul>
+                    <h4>About</h4> 
                    <li>
                        <a href='#'>Terms</a>
                    </li>

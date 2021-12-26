@@ -8,17 +8,19 @@ import {faBars,faFeatherAlt} from '@fortawesome/free-solid-svg-icons';
 
 function Header() {
 
-      const [isToggle, setIsToggle] = useState(true); 
+      const [isToggle, setIsToggle] = useState(false); 
       
-       
+        
       
     return (
         <div className="page_header">
+              <a href="/" style={{textDecoration:'none',color:'white'}}>
              <h1 className='logo'>
                 YourWords <FontAwesomeIcon icon={faFeatherAlt} />
             </h1>
+              </a>
             <nav 
-            className='navbar   navigation_bar desktop_navbar'  
+            className='navbar   navigation_bar'   id="desktop_navbar"
             >
               <ul className='navbar' >
                   <li className='nav-item'>
@@ -27,32 +29,32 @@ function Header() {
                     </a>
                 </li>
                 <li className='nav-item'>
-                     <a href='http://localhost:3000#aboutus' className='nav-link'>
+                     <a href='#aboutus' className='nav-link'>
                     About us
                     </a>
                 </li>
                   <li className='nav-item'>
-                     <a href='http://localhost:3000#Contactus' className='nav-link'>
+                     <a href='#Contactus' className='nav-link'>
                     Contact us
-                    </a>
+                    </a>      
                 </li>
                   <li className='nav-item '>
-                     <a href='/app/login' className='nav-link loginLink'>
-                     Login
+                     <a href='/register' className='nav-link loginLink'>
+                     Register
                     </a> 
                 </li>
                  </ul>
 
             </nav>
                 <div className='mobile_navbar_background '
-                 style={isToggle ? {display:'none',transition:'ease-in-out',transitionDuration:'2s'} : { transition:'ease-in-out'}}
+                 style={!isToggle ? {display:'none',transition:'ease-in-out',transitionDuration:'2s'} : { transition:'ease-in-out'}}
                  
                  onClick={() => setIsToggle(!isToggle)}
                >
               </div>    
                 <nav 
-            className='navbar navbar-expand mobile_navbar' 
-            style={isToggle ? {display:'none',transition:'ease-in-out',transitionDuration:'2s'} : { transition:'ease-in-out'}}
+            className='navbar navbar-expand'  id ="mobile_navbar"
+            style={!isToggle ? {display:'none',transition:'ease-in-out',transitionDuration:'2s'} : { transition:'ease-in-out'}}
             >
               <div className='x_mark'
                onClick={() => setIsToggle(!isToggle)}>X</div>
@@ -65,22 +67,22 @@ function Header() {
                     </a>
                 </li>
                 <li className='nav-item'>
-                     <a href='http://localhost:3000#aboutus' 
+                     <a href='#aboutus' 
                      className='nav-link'
                      onClick={() => setIsToggle(!isToggle)}>
                     About us
                     </a>
                 </li>
                   <li className='nav-item'>
-                     <a href='http://localhost:3000#Contactus' 
+                     <a href='#Contactus' 
                      className='nav-link'
                      onClick={() => setIsToggle(!isToggle)}>
                     Contact us
                     </a>
                 </li>
                   <li className='nav-item '>
-                     <a href='/app/login' className='nav-link loginLink'>
-                     Login
+                     <a href='/register' className='nav-link loginLink'>
+                     Register
                     </a> 
                 </li>
                  </ul>

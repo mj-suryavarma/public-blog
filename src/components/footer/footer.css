@@ -1,4 +1,4 @@
-.footer{
+.footer_area{
     background-color: rgb(27, 24, 24);
     color: whitesmoke;
 }
@@ -9,8 +9,7 @@
     justify-content: space-between;
     margin-top: 50px;
     padding: 0 5%;
-    align-self: center;
-    text-align: center;
+    text-align: left;
 }
     
 .footer_details{

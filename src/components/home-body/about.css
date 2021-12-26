@@ -1,0 +1,40 @@
+.about_container{
+   padding: 10px;
+    height: 80vh;
+
+}
+.about_style_one{
+    width: 40vw;
+    position: absolute;
+        left: 10%;
+    background-color: rgba(9, 7, 41, 0.979);
+    height: 50vh;
+    color: whitesmoke;
+    z-index: -1;
+    transform: translateY(-50px);
+    border-radius: 5px;
+}
+.about_style_two{
+    width: 45vw;
+    position: absolute;
+    color: whitesmoke;
+    background-color: rgba(9, 7, 41, 0.979);
+    box-shadow: 1px 1px 10px black;
+    border-radius: 5px;
+    right: 10%;
+    height: 50vh;
+    z-index: 10;
+    
+}
+.about_style_three{
+    width: 60vw;
+    position: absolute;
+    left: 15%;
+    right: 15%;
+    background-color: rgb(176, 176, 182);
+    height: 50vh;
+    box-shadow: 1px 1px 10px black;
+    transform: translateY(150px);
+   z-index: 2;
+   border-radius: 5px;
+}

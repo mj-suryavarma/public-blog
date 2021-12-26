@@ -8,6 +8,10 @@ import Register from './components/register/register';
 import PublicHome from './user-component/public-component/public-home';
 import PersonalPage from './user-component/personal/personal';
 import WritePage from './user-component/write/write';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import ReadBlog from './user-component/read.js';
+
+
 
 ReactDOM.render(
    <BrowserRouter>
@@ -17,6 +21,8 @@ ReactDOM.render(
         <Route path='/app/public' element={<PublicHome/> } /> 
         <Route path='/app/write' element={<WritePage/>} />
         <Route path='/app/personal' element={<PersonalPage />} />
+        <Route path='/app/public/read' element={<ReadBlog />} />
+        <Route path="*" element={<h2>Router doesn't exist</h2>} />
       </Routes>
    </BrowserRouter>,
 

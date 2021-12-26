@@ -4,8 +4,9 @@
     justify-content: space-evenly;
     padding-top: 60px;
     min-height: 85vh;
-    background-color: rgb(135, 157, 170);
+    background-color: rgba(15, 29, 43, 0.925);
     background-position: center;
+    color: whitesmoke;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -20,10 +21,10 @@
      flex:0.5;
      width: 350px;
      gap: 20px;
+     padding-top: 50px;
      height: 350px;
      justify-content: space-between;
      font-size: 2rem;
-     color: rgb(32, 27, 27);
      animation-name: welcomeIcon;
      animation-duration: 3s;
      animation-iteration-count: infinite;
@@ -64,9 +65,13 @@
      color: whitesmoke;
  }
 
+
  @media screen and (max-width:600px) {
      .welcome_icon_container{
          display: none;
      }
-     
+     .google_custom_button{
+         padding:5px;
+         font-size: 0.8rem;
+     }
  }
