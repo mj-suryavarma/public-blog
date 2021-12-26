@@ -45,6 +45,11 @@ padding: 10px;
 .blog_time_container > div{
     font-size: 0.8rem;
 }
+.public_blog_body > p{
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: rgb(104, 103, 103);    
+}
 
 @media screen and (max-width:500px) {
     /* .blog_time_container > div{

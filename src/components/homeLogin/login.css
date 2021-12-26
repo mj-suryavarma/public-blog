@@ -47,13 +47,7 @@
      margin: 20px;
      
  }
- .google_custom_button{
-     margin: 10px;
-     padding: 10px;
-     background-color: rgb(5, 117, 221);
-     color: white;
-     
- }
+ 
  .welcome_icon_container > div {
      display: flex;
      flex-direction: row;
@@ -71,7 +65,7 @@
          display: none;
      }
      .google_custom_button{
-         padding:5px;
-         font-size: 0.8rem;
+         margin-bottom: 20px;
      }
+     
  }

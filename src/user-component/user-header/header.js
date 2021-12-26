@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import './header.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faEdit,faFeatherAlt,faGlobe, faEllipsisV, faUserCircle} from '@fortawesome/free-solid-svg-icons'; 
+import {faEdit,faFeatherAlt,faGlobe,faHome } from '@fortawesome/free-solid-svg-icons'; 
 import IconButton from '@mui/material/IconButton/IconButton';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import { Avatar } from '@mui/material';
@@ -37,13 +37,13 @@ function UserHeader() {
          <div className='header_nav'>
          <div className='header_nav_user'>
                 <div>
-                     <IconButton>
-                     <FontAwesomeIcon icon={faGlobe} className="user_header_Icon globeIcon" />
+                     <IconButton onClick={() => {window.open("/app/public","_self")}}>
+                     <FontAwesomeIcon icon={faHome} className="user_header_Icon HomeIcon" />
                      </IconButton>
                </div>  
 
                  <div>
-                   <IconButton onClick={() => {window.open('/app/write',"_blank")}}>
+                   <IconButton onClick={() => {window.open('/app/write',"_self")}}>
                 <FontAwesomeIcon icon={faEdit} className='user_header_icon WriteIcon'  /> 
                    </IconButton>
                  </div>  

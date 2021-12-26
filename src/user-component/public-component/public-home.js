@@ -72,8 +72,10 @@ fetchData();
 
                                         </div>
                                        </div>
+                                       <div className='public_blog_body'> 
                                        <h4>{data.title}</h4>
                                         <p>{blogArray[0]}....<a href={`/app/public/read?id=${data._id}`} target="_self">read more</a></p>
+                                       </div>
                                          </div>
                             })
                         }

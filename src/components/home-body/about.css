@@ -1,15 +1,17 @@
 .about_container{
-   padding: 10px;
+margin-top: 10vh;
+    padding: 10px;
     height: 80vh;
-
 }
 .about_style_one{
     width: 40vw;
     position: absolute;
-        left: 10%;
-    background-color: rgba(9, 7, 41, 0.979);
+    left: 10%;
+    background-color: whitesmoke;
+    background-color: rgb(173, 198, 206);
     height: 50vh;
-    color: whitesmoke;
+    box-shadow: 1px 1px 10px black;
+    color: rgb(3, 52, 85);
     z-index: -1;
     transform: translateY(-50px);
     border-radius: 5px;
@@ -17,8 +19,9 @@
 .about_style_two{
     width: 45vw;
     position: absolute;
-    color: whitesmoke;
-    background-color: rgba(9, 7, 41, 0.979);
+    background-color: whitesmoke;
+    padding: 20px;
+    color: rgb(3, 52, 85);
     box-shadow: 1px 1px 10px black;
     border-radius: 5px;
     right: 10%;
@@ -27,14 +30,41 @@
     
 }
 .about_style_three{
-    width: 60vw;
+    width: 50vw;
     position: absolute;
     left: 15%;
-    right: 15%;
-    background-color: rgb(176, 176, 182);
+    right: 35%;
+    background-color: whitesmoke;
+    color: rgb(3, 52, 85);
     height: 50vh;
     box-shadow: 1px 1px 10px black;
     transform: translateY(150px);
    z-index: 2;
    border-radius: 5px;
+}
+@media screen and (max-width:1000px) {
+      
+ .removable_content{
+    display: none; 
+}
+
+}
+@media screen and (max-width:700px) {
+    .about_style_three > h4 {
+        font-size:1rem;
+    }
+    
+    .about_style_two > .about_button{
+        display: none;
+    }
+    .about_style_two{
+     padding:15px;
+    }
+    .about_style_two >h4 {
+      font-size: 1.2rem;
+      text-overflow:ellipsis;
+    }
+    .about_style_two > p {
+        font-size: 0.8rem;
+    }
 }

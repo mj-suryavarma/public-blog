@@ -41,19 +41,19 @@ function Footer() {
                       <h4>Contact Me</h4>
                     <ul>
                        <li>
-                           <a href='mailto:mjs@gamil.com'>email</a>
+                           <a href='mailto:mjsuryavarma@gamil.com' rel="send mail">email</a>
                        </li>
                        <li>
-                           <a href='#'>Linkedin</a>
+                           <a href='https://www.linkedin.com/in/m-jithendra-suryavarma-9b245020a/' rel="norefferer">Linkedin</a>
                        </li>
                        <li>
-                           <a href='#'>Twitter</a>
+                           <a href='https://twitter.com/mj_suryavarma' rel="twitter account">Twitter</a>
                        </li>
                        <li>
-                           <a href='#'>Facebook</a>
+                           <a href='https://www.facebook.com/mjithendrasuryavarma/' rel="facebook account">Facebook</a>
                        </li>
                        <li>
-                           <a href='#'>instagram</a>
+                           <a href='https://www.instagram.com/mj_suryavarma/' rel='developer instagram account ' >instagram</a>
                        </li>
                     </ul>
                 </div>

@@ -33,6 +33,11 @@ function Header() {
                     About us
                     </a>
                 </li>
+                <li className='nav-item'>
+                     <a href='#howitworks' className='nav-link'>
+                     How it works
+                    </a>
+                </li>
                   <li className='nav-item'>
                      <a href='#Contactus' className='nav-link'>
                     Contact us
@@ -73,6 +78,15 @@ function Header() {
                     About us
                     </a>
                 </li>
+                
+                <li className='nav-item'>
+                     <a href='#howitworks'
+                      className='nav-link'
+                      onClick={() => setIsToggle(!isToggle)}>
+                     How it works
+                    </a>
+                </li>
+
                   <li className='nav-item'>
                      <a href='#Contactus' 
                      className='nav-link'

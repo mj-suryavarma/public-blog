@@ -7,6 +7,7 @@ import {faComments,
   faEdit, 
   faArrowRight,
 faGlobe} from '@fortawesome/free-solid-svg-icons';
+
 import {GoogleLogin} from 'react-google-login';
 import axios from '../../axios.js';
 
@@ -189,16 +190,11 @@ class Login extends Component {
             <p className='text-light mt-4'>
               OR
             </p>
-            <div>
+            <div className='google_custom_button'>
             <GoogleLogin
     clientId="631249414397-4hklutmu3rn135q8h4j85ob79a0r5qmn.apps.googleusercontent.com"
-    render={renderProps => (
-      <button  className='google_custom_button btn btn-primary mt-3'
-      onClick={renderProps.onClick} disabled={renderProps.disabled}>
-        <FontAwesomeIcon icon={faArrowRight} />
-         <span> </span>  Continue with google</button>
-    )}
-    buttonText="Login"
+    
+    buttonText="continue with google"
     onSuccess={this.responseGoogleSuccess}
     onFailure={this.responseGoogleFailure}
     cookiePolicy={'single_host_origin'} />

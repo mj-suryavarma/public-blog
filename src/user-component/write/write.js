@@ -1,8 +1,9 @@
 import React,{Component, useState} from 'react';
 import UserHeader from '../user-header/header';
 import axios from '../../axios.js';
-import { faTruckMonster } from '@fortawesome/free-solid-svg-icons';
-
+import { faTruckMonster,faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {IconButton} from '@mui/material'
 
 class WritePage extends Component {
  
@@ -79,12 +80,19 @@ class WritePage extends Component {
 
       }
 
+
+
   render() {
+
+    
 
   return (
         <div>
              <UserHeader />
-
+        <div className="writing_container container" >
+          <IconButton onClick={() => window.open("/app/public","_self") }>
+          <FontAwesomeIcon icon={faArrowLeft}  />
+          </IconButton>
         <form 
          className="form container" 
           onSubmit={this.onSubmitHandler}
@@ -123,6 +131,7 @@ class WritePage extends Component {
 
         </form>
 
+        </div>
          
     </div>
 

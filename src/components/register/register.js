@@ -17,6 +17,7 @@ class Register extends Component {
           isError: false,
           isSuccess: false,
           isMessage : '',
+          isLoading :false,
         }
         this.changeHandler = this.changeHandler.bind(this);
         this.onSubmitHandler = this.onSubmitHandler.bind(this);
@@ -30,16 +31,13 @@ class Register extends Component {
           const targetedValue = e.target.value  
                  this.setState({[targetedName]:targetedValue});
 
-         }
-responseGoogleSuccess = (response) => {
-        console.log(response)
-}
+         } 
 
-responseGoogleFailure = (response) =>{
-       console.log(response);
-}
 onSubmitHandler = (e) => {
  e.preventDefault(); 
+
+ this.setState({isLoading : true});
+
              const email = this.state.email;
              const password = this.state.password;
              const name = this.state.name;
@@ -122,10 +120,10 @@ onSubmitHandler = (e) => {
                 /> 
 
               </div> 
-                <button type='submit' className='btn btn-primary mt-4'>Submit</button>
-              <h5 className='mt-3'>Do you have an Account ? go <a href='/'
+                <button type='submit' className='btn btn-primary mt-4'>{this.state.isLoading ? "Loading.." : "submit"}</button>
+              <h6 className='mt-3'>Already have an Account ? Go <a href='/'
               className='link'
-              style={{textDecoration:'none'}}>Home page</a></h5>
+              style={{textDecoration:'none'}}>Home Page</a></h6>
             </form>
             <div> 
          </div>
