@@ -32,7 +32,7 @@ function UserHeader() {
 
     return (
         <div className='user_header'>  
-        <h1 className='user_logo' onClick={() => window.open('/app/public',"_slef")}>
+        <h1 className='user_logo' onClick={() => window.open('/app/public',"_self")}>
         YourWords <FontAwesomeIcon icon={faFeatherAlt} />
     </h1>
          <div className='header_nav'>

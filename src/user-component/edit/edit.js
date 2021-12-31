@@ -3,7 +3,9 @@ import UserHeader from '../user-header/header';
 import axios from '../../axios.js';
 import { faTruckMonster,faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {IconButton} from '@mui/material'
+import {IconButton} from '@mui/material';
+import './edit.css';
+
 
 class EditPage extends Component {
  
@@ -36,8 +38,7 @@ class EditPage extends Component {
       
     let params = window.location.search;
     const id = new URLSearchParams(params).get('id');
-    console.log(id)
-
+     
     const options = {
       headers : {  authorization : `Bearer ${token}`,},
    }
@@ -46,8 +47,7 @@ class EditPage extends Component {
           if(id){
    
                axios.post(`/api/v1/app/blog/${id}`,body,options)
-              .then(res => {
-                  console.log(res.data)
+              .then(res => { 
                   const {title, story} = res.data;
                    this.setState({title,story})
 
@@ -92,11 +92,11 @@ class EditPage extends Component {
         
           await axios.patch(`/api/v1/app/user/blog/${id}`,body,options)
           .then(res => {
-            const {success} = res.data;
-            console.log("responsed data ",res.data)
+            const {success} = res.data; 
+
             this.setState({success: success})
               setTimeout(() => {
-                window.open("/app/public","_self");
+                window.open("/app/user/account","_self");
               }, 3000); 
 
            })
@@ -128,16 +128,16 @@ class EditPage extends Component {
        <div>
             <UserHeader />
        <div className="writing_container container" >
-         <IconButton onClick={() => window.open("/app/public","_self") }>
+         <IconButton onClick={() => window.open("/app/user/account","_self") }>
          <FontAwesomeIcon icon={faArrowLeft}  />
          </IconButton>
        <form 
         className="form container" 
          onSubmit={this.onSubmitHandler}
         >
-          <p style={{color:'green'}}>{this.state.success ? "successfully created": ""}</p>
+          <p style={{color:'green'}}>{this.state.success ? "successfully edited": ""}</p>
          <p style={{color:'red'}}>{this.state.isError ? "something went wrong please try again later..": ''}</p>
-          <div class="form-group">
+          <div className="form-group">
             <label htmlFor="title">Title</label>
             <input type="text" 
             className="form-control" 
@@ -146,9 +146,9 @@ class EditPage extends Component {
             minLength={10}
             onChange={this.onChangeHandler}
             id="title" 
-            aria-describedby="helpId" placeholder="history of football" />
+            aria-describedby="helpId"  />
           </div>
-          <div class="form-group">
+          <div className="form-group">
             <label htmlFor="title">Story</label>
             <textarea 
             className='form-control'
@@ -157,8 +157,7 @@ class EditPage extends Component {
               rows={10}
               value={this.state.story}
               minLength={20}
-             id='story'
-             placeholder='football most famous game in the world...' 
+             id='story' 
             >
                    
             </textarea>  

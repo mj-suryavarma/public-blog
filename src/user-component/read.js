@@ -21,8 +21,7 @@ function ReadPublic() {
         
       let params = window.location.search;
       const id = new URLSearchParams(params).get('id');
-      console.log(id)
- 
+      
 
    const fetchData = async() => {
 
@@ -34,8 +33,7 @@ function ReadPublic() {
            if(id){
     
                await axios.post(`/api/v1/app/blog/${id}`,body,options)
-               .then(res => {
-                   console.log(res.data)
+               .then(res => { 
                   setReadBlog(res.data)})
                .catch(err => console.log(err));
     

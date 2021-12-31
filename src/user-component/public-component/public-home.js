@@ -32,8 +32,7 @@ function PublicHome() {
          const body = { type}
     
      await axios.post('/api/v1/app/allBlog',body,options)
-      .then(res =>{
-           console.log(res.data)
+      .then(res =>{ 
           setStoryData(res.data)})
       .catch(err =>{
         setIsError(true)

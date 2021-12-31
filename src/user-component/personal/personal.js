@@ -17,6 +17,8 @@ function PersonalPage() {
  const [userInfo, setUserInfo] = useState({});
  const [deleteToggle, setDeleteToggle] = useState(false);
  const [isError , setIsError]= useState(false);
+ const [isLoading, setIsLoading] = useState(false)
+ const [isDeleteLoading, setIsDeleteLoading] = useState(false)
 
 
   const token = localStorage.getItem('token');
@@ -29,7 +31,7 @@ function PersonalPage() {
      
        ///// delete user's blog
   const deleteHandler = async() => {
- 
+   setIsDeleteLoading(true)
       const reqOptions = {
           headers : {
              'contentType': 'application/json',
@@ -38,7 +40,7 @@ function PersonalPage() {
             data : {type,BlogId}
        }
     axios.delete(`api/v1/app/user/blog/${BlogId}`,reqOptions)
-    .then(res =>{ console.log(res.data)
+    .then(res =>{ 
          const {success} = res.data
          if(success){
              setIsSuccess(success)
@@ -53,10 +55,12 @@ function PersonalPage() {
        }, 5000);  
         console.log(err)});
    
+        setIsLoading(false)
       setTimeout(() => {
-         return window.open("/app/user/account","_self");
+          window.open("/app/user/account","_self");
 
-      }, 5000);
+      }, 2000);
+     isDeleteLoading(false)
     }
 
 
@@ -64,6 +68,7 @@ function PersonalPage() {
 
   const fetchBlogData = async() => {
       /// get users blog
+      setIsLoading(true)
     const options = {
         headers : {
             authorization : `Bearer ${token}`,
@@ -80,12 +85,14 @@ function PersonalPage() {
        }, 5000);
     console.log(err)}
    )
+   setIsLoading(false)
 }
 
 //// get data
 const getUser = async() => {
       
       ///// get user info
+      
       
          if(type ==="auth"){
        
@@ -134,7 +141,7 @@ const getUser = async() => {
 
 const userDeleteHandler = async() => {
 
-    
+    setIsDeleteLoading(true)
     const reqOptions = {
         headers : {
            'contentType': 'application/json',
@@ -146,8 +153,7 @@ const userDeleteHandler = async() => {
     if(type ==="auth"){
        
         await axios.delete('/api/v1/get/user',reqOptions)
-        .then(res =>{
-            console.log(res.data)
+        .then(res =>{ 
            const {success} = res.data;
            if(success){ 
                         //              /// remove cache google user and normal user
@@ -185,8 +191,7 @@ const userDeleteHandler = async() => {
       else if(type ==="google"){
   
           await axios.delete('/api/v1/google/user',reqOptions)
-          .then(res =>{
-                  console.log(res.data)
+          .then(res =>{ 
                   const {success} = res.data;
                   if(success){ 
                                //              /// remove cache google user and normal user
@@ -219,9 +224,10 @@ const userDeleteHandler = async() => {
             console.log(err)})
       return
       }
-}
 
-            console.log("userinfo is",userInfo);
+      setIsDeleteLoading(false)
+}
+ 
     return (
         <div>
             <UserHeader />
@@ -260,7 +266,7 @@ const userDeleteHandler = async() => {
                 </div>
                 <div className="account_details">
                       <h6 style={{color:'red',marginTop:'10px'}}>{isError ? "Something went wrong please try again later..":""}</h6>  
-
+                      <h6 style={{color:'blue',textAlign:'center'}}>{isLoading ? "Loading please wait a moment":""}</h6>
                 <FontAwesomeIcon icon={faBars}
                      className="faBar" 
                     onClick={() => setIsToggle(!isToggle)} 
@@ -295,7 +301,9 @@ const userDeleteHandler = async() => {
                                         <p className='text-align-center text-center m-2'>Confirm ?</p> 
                                        <button className='btn btn-sm btn-light'
                                        onClick={()=>window.open(`/app/user/account`,"_self")}>Cancel</button>
-                                       <button className='btn btn-sm btn-danger'onClick={deleteHandler}>Delete</button>
+                                       <button className='btn btn-sm btn-danger'onClick={deleteHandler}
+                                         disabled={isDeleteLoading}
+                                       >{isDeleteLoading ? "Deleting..":"Delete"}</button>
                                     </div>
                                         }
                                     </div>
@@ -336,7 +344,8 @@ const userDeleteHandler = async() => {
                            <button className="btn btn-danger user_delete_btn_confirm mr-3" 
                            style={{margin:'0 10px'}}
                            onClick={userDeleteHandler}
-                           >delete</button>
+                           disabled={isDeleteLoading}
+                           >{isDeleteLoading ? "Deleting..":"Delete"}</button>
                            </div>
                        </div>
                    </div>

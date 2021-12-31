@@ -10,7 +10,7 @@ faGlobe} from '@fortawesome/free-solid-svg-icons';
 
 import {GoogleLogin} from 'react-google-login';
 import axios from '../../axios.js';
-
+ 
 
 class Login extends Component {
 
@@ -41,7 +41,7 @@ class Login extends Component {
          
          axios.post('/api/v1/google/auth',{tokenId : response.tokenId})
          .then(res => {
-           console.log(res.data.data)
+          
             const {email_verified, name ,email,_id, picture} = res.data.data;
              if(email_verified){ 
                localStorage.setItem('name',name);
@@ -63,8 +63,7 @@ class Login extends Component {
 
   }
 
-   responseGoogleFailure = (response) =>{
-          console.log(response);
+   responseGoogleFailure = (response) =>{ 
           this.setState({isError:"something went wrong try again"})
           setTimeout(() => {
            this.setState({isError:''})
@@ -72,9 +71,7 @@ class Login extends Component {
   }
  onSubmitHandler = (e) => {
     e.preventDefault(); 
-      this.setState({isLoading : true});
-
-    console.log(this.state.email," and  password is: ",this.state.password);
+      this.setState({isLoading : true}); 
                 const email = this.state.email;
                 const password = this.state.password;
 
@@ -84,9 +81,7 @@ class Login extends Component {
               axios.post('/api/v1/user/login',{email,password})
               .then(res =>{
       ///   get token
-                  const {user,token,msg} = res.data
-                  console.log(res.data)
-                   console.log(user.name, token);
+                  const {user,token,msg} = res.data 
                    if(token && user.name) {
 
                     /// ser user via manual login
@@ -161,6 +156,7 @@ class Login extends Component {
                 <input type="email"
                  className="form-control mt-1"
                   name="email"
+                  autoComplete="off"
                   onChange={this.changeHandler}
                    id="email" 
                    aria-describedby="emailHelpId" 
@@ -170,7 +166,8 @@ class Login extends Component {
               </div>  
               <div className="form-group mt-1">
                 <label htmlFor="password">password</label>
-                <input type="password" 
+                <input type="password"
+                autoComplete="off"
                 className="form-control mt-2" 
                 name="password" 
                 required
@@ -194,7 +191,7 @@ class Login extends Component {
             <div className='google_custom_button'>
             <GoogleLogin
     clientId="631249414397-4hklutmu3rn135q8h4j85ob79a0r5qmn.apps.googleusercontent.com"
-    
+     
     buttonText="continue with google"
     onSuccess={this.responseGoogleSuccess}
     onFailure={this.responseGoogleFailure}

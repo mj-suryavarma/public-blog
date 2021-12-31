@@ -59,7 +59,12 @@
      color: whitesmoke;
  }
 
-
+.google_login_image{
+    max-width: 40px;
+    max-height:40px;
+    border-radius: 10px;
+    
+}
  @media screen and (max-width:600px) {
      .welcome_icon_container{
          display: none;

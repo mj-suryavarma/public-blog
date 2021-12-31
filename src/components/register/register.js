@@ -40,13 +40,11 @@ onSubmitHandler = (e) => {
 
              const email = this.state.email;
              const password = this.state.password;
-             const name = this.state.name;
-             console.log("name",name,"password",password,"email",email);
+             const name = this.state.name; 
              
  
       axios.post('http://localhost:8000/api/v1/user/register', {name,email, password,})
-      .then(res =>{ 
-        console.log(res.data)
+      .then(res =>{  
        const {success,msg} = res.data;
        if(success){
 
@@ -67,6 +65,9 @@ onSubmitHandler = (e) => {
       .catch((err) =>{
          console.log(err)
         this.setState({isError:true})
+        setTimeout(()=>{
+               this.setState({isError:false})
+        },5000)
 
         });
 

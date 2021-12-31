@@ -40,7 +40,8 @@
 
 }
 .home_body_text{
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+    text-align: justify;
     padding: 0 10vw;
 }
 

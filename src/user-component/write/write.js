@@ -3,7 +3,8 @@ import UserHeader from '../user-header/header';
 import axios from '../../axios.js';
 import { faTruckMonster,faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {IconButton} from '@mui/material'
+import {IconButton} from '@mui/material';
+import './write.css';
 
 class WritePage extends Component {
  
@@ -55,7 +56,7 @@ class WritePage extends Component {
            await axios.post('/api/v1/app/blog',body,options)
            .then(res => {
              const {success} = res.data;
-             console.log(res.data)
+           
              this.setState({success: success})
                setTimeout(() => {
                  window.open("/app/public","_self");
