@@ -11,7 +11,9 @@ import {Button,Collapse} from 'react-bootstrap'
 function PublicHome() {
 
     const [storyData, setStoryData] = useState([]);
-    const [isOpen, setIsOpen] = useState(false)
+    const [isOpen, setIsOpen] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    const [isError, setIsError] = useState(false);
 
     const token = localStorage.getItem('token')
     const type = localStorage.getItem('type'); 
@@ -19,6 +21,8 @@ function PublicHome() {
 
 
     const fetchData = async() => {
+              
+        setIsLoading(true);
 
         const options = {
           headers :  { 
@@ -31,7 +35,14 @@ function PublicHome() {
       .then(res =>{
            console.log(res.data)
           setStoryData(res.data)})
-      .catch(err => console.log(err));
+      .catch(err =>{
+        setIsError(true)
+        setTimeout(() => {
+            setIsError(false)
+        }, 5000);  
+        console.log(err)});
+
+        setIsLoading(false)
     }
 
     
@@ -46,7 +57,8 @@ fetchData();
             <UserHeader /> 
               <div className='blog_home'>
                <div className='blog_list_header'> 
-                  
+                   <h6 style={{color:'red',textAlign:'center'}}>{isError ? "something went wrong please try again later":""}</h6>
+                   <h5 style={{textAlign:'center'}}>{isLoading ? "Loading....":""}</h5>
                 </div>
                     <div>
                         {
@@ -54,7 +66,7 @@ fetchData();
                                 var dateArray = data.createdAt.split(/[.,\/ T-]/)
                                 var blogArray = data.story.split(/[.]/)
                                 
-                                return <div className="blog_container">
+                                return <div className="blog_container" key={data._id}>
                                        <div className='blog_header'>
                                        <Avatar src={data.googlePicture} className="blog_avatar"/>
                                     <div className='blog_header_detail'>

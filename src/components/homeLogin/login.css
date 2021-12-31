@@ -3,8 +3,8 @@
     flex-direction: row;
     justify-content: space-evenly;
     padding-top: 60px;
-    min-height: 85vh;
-    background-color: rgba(15, 29, 43, 0.925);
+    min-height: 85vh; 
+    background-color: rgb(10, 20, 29);
     background-position: center;
     color: whitesmoke;
     background-repeat: no-repeat;

@@ -28,6 +28,10 @@
 .user_header_icon:hover{
   cursor: pointer;
 }
+.HomeButton > svg{
+  font-size: 2rem;
+  
+}
 
 .header_nav_user{
   display:flex;
@@ -48,6 +52,9 @@
   font-size: 0.4rem;
 }
  
+.header_write_icon{
+  margin-top: 5px;
+}
 .toolIcon_container{
   display: none;
 
@@ -84,9 +91,8 @@
   color: black;
 }
 
-@media screen and (max-width:700px) {
+@media screen and (max-width:800px) {
   
- 
   .header_user_name{
     display: none;  
 

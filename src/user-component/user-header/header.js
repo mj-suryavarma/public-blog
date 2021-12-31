@@ -5,6 +5,7 @@ import {faEdit,faFeatherAlt,faGlobe,faHome } from '@fortawesome/free-solid-svg-i
 import IconButton from '@mui/material/IconButton/IconButton';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import { Avatar } from '@mui/material';
+import {Home} from '@mui/icons-material'
 
 
 function UserHeader() {
@@ -17,7 +18,7 @@ function UserHeader() {
               //              /// remove cache google user and normal user
               localStorage.removeItem('googlename');
               localStorage.removeItem('googleemail');
-              localStorage.removeItem('googlepicture');
+              localStorage.removeItem('googlePicture');
 
               localStorage.removeItem('name');
               localStorage.removeItem('email');
@@ -37,12 +38,12 @@ function UserHeader() {
          <div className='header_nav'>
          <div className='header_nav_user'>
                 <div>
-                     <IconButton onClick={() => {window.open("/app/public","_self")}}>
-                     <FontAwesomeIcon icon={faHome} className="user_header_Icon HomeIcon" />
+                     <IconButton onClick={() => {window.open("/app/public","_self")}} className="HomeButton">
+                     <Home className="user_header_Icon HomeIcon" />
                      </IconButton>
                </div>  
 
-                 <div>
+                 <div className='header_write_icon'>
                    <IconButton onClick={() => {window.open('/app/write',"_self")}}>
                 <FontAwesomeIcon icon={faEdit} className='user_header_icon WriteIcon'  /> 
                    </IconButton>
@@ -51,10 +52,10 @@ function UserHeader() {
                <div className="header_user_avatar">
                    <span className="header_user_name">{localStorage.getItem('name') } </span> 
                    <IconButton onClick={() => setIsToggle(!isToggle)}>
-                <Avatar src={localStorage.getItem('googlepicture')} className='userIcon' />
+                <Avatar src={localStorage.getItem('googlePicture')} className='userIcon' />
                    </IconButton>
                    <div className="logout_container" style={isToggle ?{display:'block'} : {display:'none'}}>
-                     <p className="account" >Account</p>
+                     <p className="account" onClick={() => window.open("/app/user/account","_self")}>Account</p>
                      <p onClick={logoutHandler} className="logout">Logout</p>
                     </div> 
                  </div> 

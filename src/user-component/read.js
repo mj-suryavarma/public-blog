@@ -18,7 +18,7 @@ function ReadPublic() {
       const type = localStorage.getItem('type');
       const token = localStorage.getItem('token');
       
-          console.log(type,token)
+        
       let params = window.location.search;
       const id = new URLSearchParams(params).get('id');
       console.log(id)

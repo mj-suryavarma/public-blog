@@ -6,9 +6,8 @@ margin-top: 10vh;
 .about_style_one{
     width: 40vw;
     position: absolute;
-    left: 10%;
-    background-color: whitesmoke;
-    background-color: rgb(173, 198, 206);
+    left: 10%; 
+  background-color: rgb(142, 167, 177);
     height: 50vh;
     box-shadow: 1px 1px 10px black;
     color: rgb(3, 52, 85);

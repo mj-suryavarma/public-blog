@@ -1,0 +1,185 @@
+.accountPage{
+    width: 100vw;
+}
+.account_container{
+    display: flex;
+    width: 90vw;
+    background-color:#dddddd;
+    height: 70vh;
+    margin:0 5vw;
+
+}
+.account_slids {
+    flex: 0.2;
+    height: 65vh;
+    background-color: rgb(217, 218, 217);
+    margin: 20px;
+    display:flex;
+    flex-direction: column;
+    gap:20px;
+
+}
+.account_slids > h5 {
+    padding: 20px 0px;
+    text-align: center;
+    color: rgb(5, 22, 34);
+}
+.account_slids > h5:hover{
+    background-color: #c5c4c4;
+    cursor: pointer;
+    color: rgb(16, 67, 104);
+}
+.account_details{
+    flex: 0.8;
+    height: 100%;
+    overflow-y: scroll;
+}
+.account_slids_mobile{
+    position: absolute;
+    height: 100%;
+    flex: 0.3;
+    padding: 0 20px ;
+    background-color: rgb(230, 232, 233);
+    display:none; 
+    gap:20px;
+    z-index: 100;
+}
+
+.account_slids_mobile > h5 {
+    padding: 20px 0px;
+    text-align: center;
+    color: rgb(5, 22, 34);
+}
+.account_slids_mobile > h5:hover{
+    cursor: pointer;
+    color: rgb(16, 67, 104);
+}
+#slid_danger{
+    color: red;
+}
+#slid_danger_mobile{
+    color:red;
+}
+
+.faBar{
+  margin:20px;
+  font: 1.5rem;
+  display: none;
+  cursor:pointer; 
+}
+.faBar_mobile{
+    margin:20px;
+    font: 1.5rem;
+  cursor: pointer;   
+}
+.myBlog_container{
+    padding: 0 5vw;
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+.myBlog{
+    padding: 0 3vw;
+    background-color: #e9e8e8;
+    white-space: pre-wrap;
+}
+.myBlog_story{
+    text-align: justify;
+    
+}
+.myBlog_head{
+    display: flex;
+    flex-direction: row;
+   justify-content: space-between;
+   margin: 10px;
+}
+.myBlog_edit_delete{
+    display: flex;
+    flex-direction: row;
+    gap:10vw;
+   font-weight: 700;
+   font-size: 1.2rem;
+}
+.myBlog_edit_delete > .myBlog_edit >a{
+    text-decoration: none;
+    color: black;
+}
+.myBlog_edit_delete > .myBlog_edit>a:hover{
+    color: rgb(57, 88, 129);
+}
+.myBlog_edit_delete > .myBlog_delete >a{
+    text-decoration:none;
+    color: red;
+}
+.myBlog_edit_delete > .myBlog_delete>a:hover{
+    color: rgb(148, 75, 75);
+}
+
+.delete_alert{
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+    background-color: rgb(243, 243, 158);
+}
+
+.delete_alert > button {
+   margin-left: 20px;
+}
+
+.userInfo_container{
+    display:flex;
+    flex-direction: column;
+    gap:20px;
+    margin:10px;
+    padding:10px;
+}
+.userInfo_container > .MuiAvatar-root{
+    margin: 0 20px; 
+    width:60px;
+    height: 60px;
+}
+
+.userInfo{
+margin: 10px;
+padding: 10px;
+display: flex;
+flex-direction: column;
+gap: 10px;
+}
+.user_delete_container{
+    margin:10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap:30px;
+    font-size:1.1rem;
+}
+.user_delete_btn{
+    margin: 10px;
+    background: rgb(238, 15, 15);
+    color: black;
+    padding:5px;
+    border-radius: 5px;
+    outline-color: red;
+}
+.user_delete_btn:hover{
+    background-color: rgb(218, 76, 76);
+}
+.user_delete_alert{
+   display: flex;
+   justify-content: space-around;
+}
+
+@media screen and (max-width:800px) {
+    .faBar{
+        display: block;
+    }
+    .account_slids{
+        display: none;
+    }
+    .account_slids_mobile{
+        display: block;
+    }
+    .account_details{
+        flex:1;
+    }
+}

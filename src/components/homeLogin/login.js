@@ -98,7 +98,7 @@ class Login extends Component {
               //              /// remove cache google user
                localStorage.removeItem('googlename');
                localStorage.removeItem('googleemail');
-               localStorage.removeItem('googlepicture');
+               localStorage.removeItem('googlePicture');
                            
                       this.setState({isLoading:false});
                            window.open('/app/public',"_self");
@@ -134,7 +134,7 @@ class Login extends Component {
     
     return (
         <div className="entry_page">
-         
+          
             <div className="welcome_icon_container ">
               <div>
              <FontAwesomeIcon icon={faComments} className='welcome_icon' />
@@ -149,8 +149,9 @@ class Login extends Component {
               </div>
               <div> 
               </div>
-            </div>
-            <div className='login_container'>
+            </div> 
+            
+             <div className='login_container'>
               <h3>Login</h3>
               
             <form className='form mt-4' onSubmit={this.onSubmitHandler}>

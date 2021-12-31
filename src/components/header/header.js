@@ -21,7 +21,7 @@ function Header() {
               </a>
             <nav 
             className='navbar   navigation_bar'   id="desktop_navbar"
-            >
+            > 
               <ul className='navbar' >
                   <li className='nav-item'>
                      <a href='#' className='nav-link'>
@@ -38,11 +38,7 @@ function Header() {
                      How it works
                     </a>
                 </li>
-                  <li className='nav-item'>
-                     <a href='#Contactus' className='nav-link'>
-                    Contact us
-                    </a>      
-                </li>
+                  
                   <li className='nav-item '>
                      <a href='/register' className='nav-link loginLink'>
                      Register
@@ -86,14 +82,7 @@ function Header() {
                      How it works
                     </a>
                 </li>
-
-                  <li className='nav-item'>
-                     <a href='#Contactus' 
-                     className='nav-link'
-                     onClick={() => setIsToggle(!isToggle)}>
-                    Contact us
-                    </a>
-                </li>
+ 
                   <li className='nav-item '>
                      <a href='/register' className='nav-link loginLink'>
                      Register

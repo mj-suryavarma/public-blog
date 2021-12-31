@@ -39,7 +39,7 @@ class WritePage extends Component {
           const token = localStorage.getItem('token');
           const type = localStorage.getItem('type');
           const userName = localStorage.getItem('name');
-          const googlePicture = localStorage.getItem('googlepicture')
+          const googlePicture = localStorage.getItem('googlePicture')
 
 
           if(title.length > 11 && story.length > 21) {
@@ -99,7 +99,8 @@ class WritePage extends Component {
          >
            <p style={{color:'green'}}>{this.state.success ? "successfully created": ""}</p>
           <p style={{color:'red'}}>{this.state.isError ? "something went wrong please try again later..": ''}</p>
-           <div class="form-group">
+          <h6 style={{textAlign:'center'}}>{this.state.isLoading ? "Loading..":""}</h6>
+           <div className="form-group">
              <label htmlFor="title">Title</label>
              <input type="text" 
              className="form-control" 
@@ -109,7 +110,7 @@ class WritePage extends Component {
              id="title" 
              aria-describedby="helpId" placeholder="history of football" />
            </div>
-           <div class="form-group">
+           <div className="form-group">
              <label htmlFor="title">Story</label>
              <textarea 
              className='form-control'
